@@ -37,7 +37,6 @@ workflows:
   build-and-test:
     jobs:
       - test-php
-      - php/test
       # - deploy:
       #     requires:
       #       - test-php
