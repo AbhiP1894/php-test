@@ -16,7 +16,7 @@ jobs:
      # - run:
       #    name: Run PHPUnit Tests
        #   command: ./vendor/bin/phpunit --log-junit test-results.xml HelloTest.php
-       - run:
+      - run:
           name: Run PHPUnit Tests
           command: ./vendor/bin/phpunit --log-junit test-results.xml HelloTest.php
       - store_test_results:
