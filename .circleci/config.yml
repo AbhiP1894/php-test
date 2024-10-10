@@ -4,8 +4,9 @@ orbs:
 
 jobs:
   test-php:
-    docker:
-      - image: cimg/php:8.2.7
+    # Install php packages and run tests
+    install_composer_packages:
+    executor: php/default
     steps:
       - checkout
       - php/install-composer:
@@ -13,22 +14,23 @@ jobs:
       - run:
           name: Set permissions for PHPUnit
           command: chmod +x ./vendor/bin/phpunit
+    steps:
       - php/test:
           command: ./vendor/bin/phpunit --log-junit test-results.xml HelloTest.php
       - store_test_results:
           path: test-results.xml
       - store_artifacts:
           path: test-results.xml
-          destination: test-results
-
+          destination: test-results   
   deploy:
+    # This is an example deploy job, not actually used by the workflow
     docker:
       - image: cimg/base:stable
     steps:
+      # Replace this with steps to deploy to users
       - run:
           name: Deploy
           command: '#e.g. ./deploy.sh'
-
 workflows:
   build-and-test:
     jobs:
