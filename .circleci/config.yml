@@ -13,9 +13,12 @@ jobs:
       - run:
           name: Set permissions for PHPUnit
           command: chmod +x ./vendor/bin/phpunit
-      - run:
-          name: Run PHPUnit Tests
-          command: ./vendor/bin/phpunit --log-junit test-results.xml HelloTest.php
+     # - run:
+      #    name: Run PHPUnit Tests
+       #   command: ./vendor/bin/phpunit --log-junit test-results.xml HelloTest.php
+    steps: 
+      - php/test
+          
       - store_test_results:
           path: test-results.xml
       - store_artifacts:
@@ -34,6 +37,7 @@ workflows:
   build-and-test:
     jobs:
       - test-php
+      - php/test
       # - deploy:
       #     requires:
       #       - test-php
