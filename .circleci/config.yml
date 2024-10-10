@@ -16,9 +16,7 @@ jobs:
      # - run:
       #    name: Run PHPUnit Tests
        #   command: ./vendor/bin/phpunit --log-junit test-results.xml HelloTest.php
-    steps: 
       - php/test
-          
       - store_test_results:
           path: test-results.xml
       - store_artifacts:
