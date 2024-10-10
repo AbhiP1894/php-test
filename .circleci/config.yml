@@ -15,6 +15,11 @@ jobs:
       - run:
           name: Run tests
           command: ./vendor/bin/phpunit HelloTest.php
+      - store_test_results:
+          path: test-results.xml
+      - store_artifacts:
+          path: test-results.xml
+          destination: test-results   
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
