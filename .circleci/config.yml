@@ -13,9 +13,6 @@ jobs:
       - run:
           name: Set permissions for PHPUnit
           command: chmod +x ./vendor/bin/phpunit
-     # - run:
-      #    name: Run PHPUnit Tests
-       #   command: ./vendor/bin/phpunit --log-junit test-results.xml HelloTest.php
       - run:
           name: Run PHPUnit Tests
           command: ./vendor/bin/phpunit --log-junit test-results.xml HelloTest.php
@@ -25,18 +22,9 @@ jobs:
           path: test-results.xml
           destination: test-results
 
-  deploy:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: Deploy
-          command: '#e.g. ./deploy.sh'
 
 workflows:
   build-and-test:
     jobs:
       - test-php
-      # - deploy:
-      #     requires:
-      #       - test-php
+      
